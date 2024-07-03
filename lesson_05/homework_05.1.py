@@ -45,7 +45,7 @@ car_data = {
   'Nissan Titan': ('silver', 2018, 5.6, 'pickup', 35000)
 }
 search_criteria = (2017, 1.6, 36000)
-list_ = []
+
 def search_by_criteria(criteria):
   car_data_sorted = sorted(car_data.items(), key=lambda car: car[1][4])
   search_list = []
