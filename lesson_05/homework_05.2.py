@@ -21,6 +21,7 @@ people_records = [
   ('Ava', 'White', 42, 'Journalist', 'San Diego'),
   ('Ethan', 'Anderson', 36, 'Product Manager', 'Phoenix')
 ]
+
 #1
 people_records.insert (0, ('Harry', 'Nickolson', 39, 'Product Owner', 'Miami'))
 
