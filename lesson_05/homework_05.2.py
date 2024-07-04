@@ -37,7 +37,6 @@ people_records_1 = [print(x) for x in people_records]
 
 #3
 print('#3===============================================')
-index_to_check = [6, 10, 13]
 age = 30
 check = True
 for i in range(len(people_records)):
