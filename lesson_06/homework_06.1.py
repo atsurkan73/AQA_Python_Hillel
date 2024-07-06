@@ -1,3 +1,5 @@
+# homework_06.1
+
 # Порахувати кількість унікальних символів в строці.
 # Якщо їх більше 10 - вивести в консоль True, інакше - False. Строку отримати за допомогою функції input()
 
@@ -7,9 +9,9 @@ task = task.lower()
 
 task_list = [x for x in task]
 
-uniq_list = []
-
 print(f'all symbols: ', task_list)
+
+uniq_list = []
 
 [uniq_list.append(x) for x in task_list if x not in uniq_list]
 
