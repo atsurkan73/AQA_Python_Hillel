@@ -31,6 +31,11 @@ class MyTest(unittest.TestCase):
 
 
 # homework_04, task 1 - 3
+##  ПЕРЕЗАПИСУЙТЕ зміст змінної adwentures_of_tom_sawer у завданнях 1-3
+# Дані у строці adwentures_of_tom_sawer розбиті випадковим чином, через помилку.
+# 1 - треба замінити кінець абзацу на пробіл .replace("\n", " ")
+# 2- Замініть .... на пробіл
+# 3 - Зробіть так, щоб у тексті було не більше одного пробілу між словами.
     def test_search_by_criteria(self):
         text = data.adwentures_of_tom_sawer
         text = text.replace("\n", " ")
@@ -42,6 +47,8 @@ class MyTest(unittest.TestCase):
         self.assertEqual(text, data.adwentures_of_tom_sawer_formatted, 'Text formatting is not correct')
 
 # homework_05.1
+# Given list of tuples (name, surname, age, profession, City location)
+# 1 - Add your new record to the beginning of the given list
     def test_search_by_criteria(self):
 
         cars = data.car_data
