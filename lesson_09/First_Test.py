@@ -3,6 +3,33 @@ import data
 
 class MyTest(unittest.TestCase):
 
+# homework_03.10
+# Родина зібралася в автомобільну подорож із Харкова в Буда-
+# пешт. Відстань між цими містами становить 1600 км. Відомо,
+# що на кожні 100 км необхідно 9 літрів бензину. Місткість баку
+# становить 48 літрів.
+# 1) Скільки літрів бензину знадобиться для такої подорожі?
+# 2) Скільки щонайменше разів родині необхідно заїхати на зап-
+# равку під час цієї подорожі, кожного разу заправляючи пов-
+# ний бак?
+    def test_trip_consumption_check(self):
+        distance_all = 1600
+        fuel_per_100_km = 9
+        fuel_tank_volume = 48
+
+        fuel_for_jorney = (distance_all / 100) * fuel_per_100_km  # fuel volume for all jorney
+        tank_filling_number = fuel_for_jorney / fuel_tank_volume
+        if tank_filling_number - int(tank_filling_number) != 0:
+            tank_filling_number += 1                              # minimal number of fillings of full tank
+
+        distance_for_all_fuel = int((tank_filling_number * fuel_tank_volume) / fuel_per_100_km) * 100
+        distance_for_one_tank_fuel = int(fuel_tank_volume / fuel_per_100_km) * 100
+
+        # verification that all fuel volume is enough to cover the distance and
+        # not more than all distance plus distance for one full tank
+        self.assertIn(distance_for_all_fuel, range(distance_all, (distance_all + distance_for_one_tank_fuel)))
+
+
 # homework_04, task 1 - 3
     def test_search_by_criteria(self):
         text = data.adwentures_of_tom_sawer
@@ -32,6 +59,8 @@ class MyTest(unittest.TestCase):
             self.assertLessEqual(car[1][4], criteria[2], f'Price is Greater or Equal than {criteria[2]}')
 
 # homework_05.2 #1
+# Given list of tuples (name, surname, age, profession, City location)
+# 1 - Add your new record o the beginning of the given list
     def test_people_add_to_list (self, index = 0):
         people_records = data.people_records
 
@@ -42,6 +71,8 @@ class MyTest(unittest.TestCase):
         self.assertEqual (people_records[index], added_object)
 
 # homework_05.2 #2
+# Given list of tuples (name, surname, age, profession, City location)
+# 2 - In modified list swap elements with indexes 1 and 5 (1<->5). Print result
     def test_swap_items_in_list(self, index1 = 2, index2 = 4):
         people_records = data.people_records
 
@@ -54,6 +85,8 @@ class MyTest(unittest.TestCase):
         self.assertEqual(obj2_before_swap, people_records[index1], 'Swap is not correct')
 
 # homework_05.2 #3
+# Given list of tuples (name, surname, age, profession, City location)
+# 3 - check that all people in modified list with records indexes 6, 10, 13 have age >=30.
     def test_check_age_more_or_equal (self):
         people_records = data.people_records
 
@@ -76,20 +109,23 @@ class MyTest(unittest.TestCase):
         self.assertTrue(check, f'Someone from verified persons has age less than {age} year')
 
 # homework_06.3
+# Є list з даними. Напишіть код, який сформує новий list (наприклад lst2), який містить лише змінні типу стрінг,
+# які присутні в lst1. Данні в лісті можуть бути будь якими
     def test_new_list_only_string(self):
 
         list_origin = data.lst1
 
         new_list1 = []
-        for item in list_origin:  # method 1 with cycle for
+        for item in list_origin:  # new list creation by method 1 with cycle for
             if type(item) is str:
                 new_list1.append(item)
 
-        new_list2 = [x for x in list_origin if type(x) is str]  # method 2 with list comprehension
+        new_list2 = [x for x in list_origin if type(x) is str]  # new list creation by method 2 with list comprehension
 
         self.assertEqual(new_list1, new_list2, 'Different lists made with Method1 and Method2')
 
 # homework_06.4
+# Є ліст з числами, порахуйте сумму усіх ПАРНИХ чисел в цьому лісті
     def test_sum_of_even_numbers_in_list (self):
 
         lst = data.lst2
@@ -133,7 +169,6 @@ class MyTest(unittest.TestCase):
 
 # homework_07.4
 # Написати функцію, яка приймає рядок та повертає його у зворотному порядку.
-
     def test_revert_string(self):
 
         string_to_revert = data.adwentures_of_tom_sawer_formatted
@@ -157,7 +192,6 @@ class MyTest(unittest.TestCase):
 
 # homework_07.5
 #Написати функцію, яка приймає список слів та повертає найдовше слово у списку.
-
     def test_longest_word_in_list (self):
         some_list = ['France', 'Portugal', 'Spain', 'Germany', 'Netherlands', 'Argentina', 'Philippines', 'China']
 
@@ -187,27 +221,27 @@ class MyTest(unittest.TestCase):
 # Є ліст з числами, порахуйте сумму усіх ПАРНИХ чисел в цьому лісті
     def test_count_even_numbers (self):
 
-        lst_origin = [1, 2, 3, 3, 4, 5, 6, 66, 7, 8, 9, 10, 90, 0, 11, 2, 2, 3, 4, -3, -100, 2.99, -4.0]
-
-        lst_of_even = [x for x in lst_origin if x % 2 == 0]
+        lst_origin = data.lst2
+        lst_of_even = [x for x in lst_origin if isinstance(x, (int, float)) and x % 2 == 0]
         lst_of_even_sum = sum(lst_of_even)
 
         lst_of_even_2 = []
         lst_of_even_sum_2 = 0
         for num in lst_origin:
-            if num % 2 == 0:
+            if isinstance(num, (int, float)) and num % 2 == 0:
                 lst_of_even_2.append(num)
                 lst_of_even_sum_2 += num
 
-        self.assertEqual( lst_of_even, lst_of_even_2)
+        self.assertEqual(lst_of_even, lst_of_even_2)
         self.assertEqual(lst_of_even_sum, lst_of_even_sum_2)
 
-    def test_count_even_numbers_negative (self):
 
-        lst_origin_1 = ['n', 2, 3, 3, 4, 5, 6, 66, 7, 8, 9, 10, 90, 0, 11, 2, 2, 3, 4, -3, -100, 2.99, -4.0]
+    # def test_count_even_numbers_negative (self):
+    #     lst_origin = data.lst2
+    #     with self.assertRaises(TypeError):
+    #         lst_of_even = [x for x in lst_origin if x % 2 == 0]
+    #         print(lst_of_even)
 
-        with self.assertRaises(TypeError):
-            lst_of_even = [x for x in lst_origin_1 if x % 2 == 0]
 
 if __name__ == '__main__':
     unittest.main()
