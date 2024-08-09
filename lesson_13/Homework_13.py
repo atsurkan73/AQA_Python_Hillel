@@ -86,7 +86,7 @@ def find_xml_papameter(Group_number: int):
 
     tree = ET.parse('C:\\Users\\ATsurkan\\PycharmProjects\\AQA_Python_Hillel\\Lesson_13\\Ideas_for_tests\\Work_with_xml\\groups.xml')
     root = tree.getroot()
-
+    checked = False
     # Пошук елементу timing_exbytes/incoming у для заданої групи
     for group in root.findall('group'):
         timing_exbytes = group.find('timingExbytes')
@@ -95,6 +95,8 @@ def find_xml_papameter(Group_number: int):
             if incoming is not None and group.find('number').text == f'{Group_number}':
                 if group.find('number').text == f'{Group_number}':
                     log_message = f"Group/number: {Group_number}, timing_exbytes/incoming: {incoming.text}"
+                    checked = True
+
 
     # Створення та налаштування логера
     logging.basicConfig(
@@ -103,6 +105,9 @@ def find_xml_papameter(Group_number: int):
     )
     console_handler = logging.StreamHandler()
     logging.getLogger('').addHandler(console_handler)
-    logging.info(log_message)
+    if checked:
+        logging.info(log_message)
+    else:
+        print(f'Group/number \'{Group_number}\' not found!')
 
-find_xml_papameter(2)
+find_xml_papameter(8)
