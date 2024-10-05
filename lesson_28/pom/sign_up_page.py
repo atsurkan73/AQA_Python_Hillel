@@ -15,22 +15,22 @@ class Sigh_Up_Page:
 
 
     def name_field(self):
-        return self.driver.find_element(self.INPUT_NAME[0], self.INPUT_NAME[1])
+        return self.driver.find_element(*Sigh_Up_Page.INPUT_NAME)
 
     def last_name_field(self):
-        return self.driver.find_element(self.INPUT_LAST_NAME[0], self.INPUT_LAST_NAME[1])
+        return self.driver.find_element(*Sigh_Up_Page.INPUT_LAST_NAME)
 
     def email_field(self):
-        return self.driver.find_element(self.INPUT_EMAIL[0], self.INPUT_EMAIL[1])
+        return self.driver.find_element(*Sigh_Up_Page.INPUT_EMAIL)
 
     def password_field(self):
-        return self.driver.find_element(self.INPUT_PASSWORD[0], self.INPUT_PASSWORD[1])
+        return self.driver.find_element(*Sigh_Up_Page.INPUT_PASSWORD)
 
     def reenter_password_field(self):
-        return self.driver.find_element(self.RE_ENTER_PASSWORD[0], self.RE_ENTER_PASSWORD[1])
+        return self.driver.find_element(*Sigh_Up_Page.RE_ENTER_PASSWORD)
 
     def register_button(self):
-        return self.driver.find_element(self.REGISTER[0], self.REGISTER[1])
+        return self.driver.find_element(*Sigh_Up_Page.REGISTER)
 
     def x_button(self):
-        return self.driver.find_element(self.X_BUTTON[0], self.X_BUTTON[1])
+        return self.driver.find_element(*Sigh_Up_Page.X_BUTTON)

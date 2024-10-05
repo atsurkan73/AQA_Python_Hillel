@@ -8,4 +8,4 @@ class HomePage:
         self.driver = driver
 
     def sign_up_button(self):
-        return self.driver.find_element(By.XPATH, '//button[text()=\'Sign up\']')
+        return self.driver.find_element(*HomePage.SIGN_UP)

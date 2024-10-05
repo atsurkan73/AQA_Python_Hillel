@@ -1,5 +1,7 @@
+import string
+from random import choice
 
-name = 'NewTestUserNmlmyzx'
+name = f'NewTestUser{choice(string.ascii_uppercase)}{choice(string.ascii_lowercase)}'
 last_name = f'{name}last'
 email = f'{name}@test.com'
 password = 'Abracadabra1'
