@@ -1,5 +1,5 @@
 
-name = 'NewTestUserNmlmyz'
+name = 'NewTestUserNmlmyzx'
 last_name = f'{name}last'
 email = f'{name}@test.com'
 password = 'Abracadabra1'
